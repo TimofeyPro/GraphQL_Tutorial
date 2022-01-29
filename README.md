@@ -1,4 +1,4 @@
-## Build a Blog Using Django, Vue v3, Vue Router v4, Vue Apollo v4 and GraphQL.  
+## Build a Blog Using Django, Vue v3, Vue Router v4, Vue Apollo v4 and GraphQL 
 I tested a tutorial [Build a Blog Using Django, Vue, and GraphQL tutorial](https://realpython.com/python-django-blog/#step-5-set-up-vuejs) by Dane Hillard on Ubuntu 20.04 (LTS) x64 virtual server in [DigitalOcean](https://www.digitalocean.com/). But since the tutorial uses Vue 2, I rewrote the code using vue<b>@3</b>.2.29, vue-router@<b>4</b>.0.12 and vue/cli-service@4.5.15, 
  
    1. Make [initial server setup](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04)
