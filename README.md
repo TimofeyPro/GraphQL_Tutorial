@@ -16,7 +16,7 @@ I tested a tutorial [Build a Blog Using Django, Vue, and GraphQL tutorial](https
    11. npm install --save @vue/apollo-composable
    12. npm install --save @vue/apollo-option
    13. npm run serve (check that frontend works well at http://<i>IP address of your server</i>:8080/
-   14. copy and study App.vue, main.js and router.js from this repository [GraphQL_Tutorial/frontend/src/](https://github.com/TimofeyPro/GraphQL_Tutorial/tree/main/frontend/src)
+   14. copy and study App.vue, main.js and router.js from this repository at [GraphQL_Tutorial/frontend/src/](https://github.com/TimofeyPro/GraphQL_Tutorial/tree/main/frontend/src)
    15. vue files in components folder (Vue Components as per Steps 7 & 8) were not changed but also saved [here](https://github.com/TimofeyPro/GraphQL_Tutorial/tree/main/frontend/src/components)
 
 Thats all.
