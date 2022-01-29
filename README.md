@@ -6,8 +6,8 @@ I tested a tutorial [Build a Blog Using Django, Vue, and GraphQL tutorial](https
    3. Follow steps 1 - 4 from [original tutorial](https://realpython.com/python-django-blog/)
    4. sudo ufw allow 8080 (this opens port 8080 which will be used by frontend)
    5. install latest stable version of nude js:
-        a.  curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-        b.  sudo apt-get install -y nodejs
+        <br>   a.  curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+        <br>   b.  sudo apt-get install -y nodejs
    6. sudo npm install -g @vue/cli  
    7. vue create frontend (choose - Default (<b>Vue 3</b>) ([Vue 3] babel, eslint)
    8. cd frontend
