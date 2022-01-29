@@ -1,10 +1,10 @@
 ## Build a Blog Using Django, Vue v3, Vue Router v4, Vue Apollo v4 and GraphQL.  
-I tested a tutorial [Build a Blog Using Django, Vue, and GraphQL tutorial](https://realpython.com/python-django-blog/#step-5-set-up-vuejs) by Dane Hillard on Ubuntu 20.04 (LTS) x64 virtual servers in [DigitalOcean] (https://www.digitalocean.com/). But since the tutorial uses Vue 2, I rewrote the code using vue<b>@3</b>.2.29, vue-router@<b>4</b>.0.12, vue/cli-service@4.5.15, 
+I tested a tutorial [Build a Blog Using Django, Vue, and GraphQL tutorial](https://realpython.com/python-django-blog/#step-5-set-up-vuejs) by Dane Hillard on Ubuntu 20.04 (LTS) x64 virtual servers in [DigitalOcean](https://www.digitalocean.com/). But since the tutorial uses Vue 2, I rewrote the code using vue<b>@3</b>.2.29, vue-router@<b>4</b>.0.12 and vue/cli-service@4.5.15, 
  
-   1. Make [initial server setup] (https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04)
+   1. Make [initial server setup](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04)
    2. Make [set up of Django with Postgres, Nginx, and Gunicorn on Ubuntu 20.04] (https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04)
-   3. Follow steps 1 - 4 from [original tutorial] (https://realpython.com/python-django-blog/)
-   4. sudo ufw allow 8080 (this creates port 8080 which will be used by frontend)
+   3. Follow steps 1 - 4 from [original tutorial](https://realpython.com/python-django-blog/)
+   4. sudo ufw allow 8080(this creates port 8080 which will be used by frontend)
    5. install latest stable version of nude js:
         a.  curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
         b.  sudo apt-get install -y nodejs
