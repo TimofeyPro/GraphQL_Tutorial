@@ -5,7 +5,7 @@ I tested a tutorial [Build a Blog Using Django, Vue, and GraphQL tutorial](https
    2. Make [set up of Django with Postgres, Nginx, and Gunicorn on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04)
    3. Follow steps 1 - 4 from [original tutorial](https://realpython.com/python-django-blog/)
    4. sudo ufw allow 8080 (this opens port 8080 which will be used by frontend)
-   5. install latest stable version of [nude js](https://github.com/nodesource/distributions):
+   5. install latest stable version of [nude.js](https://github.com/nodesource/distributions):
         <br>   a.  curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
         <br>   b.  sudo apt-get install -y nodejs
    6. sudo npm install -g @vue/cli  
