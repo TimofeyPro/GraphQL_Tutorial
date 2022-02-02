@@ -1,4 +1,3 @@
-
 import strawberry
 import strawberry_django
 from strawberry_django import auto, auth
@@ -48,9 +47,9 @@ def get_all_posts(root, info):
         .all()
     )
 
-def author_by_username(root, info, 'username'):
+def author_by_username(root, info, username: str):
     return models.Profile.objects.select_related('user').get(
-        user__username = username
+        user__username=username
     )
 
 def post_by_slug(root, info, slug: str):
