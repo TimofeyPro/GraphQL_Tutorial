@@ -1,3 +1,4 @@
+
 import strawberry
 import strawberry_django
 from strawberry_django import auto, auth
@@ -6,12 +7,17 @@ from typing import List
 from datetime import date
 from django.contrib.auth import get_user_model
 
-UserType = get_user_model()
+@strawberry.django.type(get_user_model())
+class UserType:
+    id: auto
+    username: auto
+    first_name: auto
+    last_name: auto
 
 @strawberry.django.type(models.Profile)
 class AuthorType:
     id: auto
-    user: auto
+    user: 'UserType'
     website: auto
     bio: auto
 
@@ -42,7 +48,7 @@ def get_all_posts(root, info):
         .all()
     )
 
-def author_by_username(root, info, username: str):
+def author_by_username(root, info, 'username'):
     return models.Profile.objects.select_related('user').get(
         user__username = username
     )
