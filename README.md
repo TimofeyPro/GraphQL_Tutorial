@@ -135,6 +135,7 @@ ExecStart=/home/your_user_name/.cache/pypoetry/virtualenvs/backend-...-py3.8/bin
 WantedBy=multi-user.target
 ```
 ```
+sudo ln -s /etc/nginx/sites-available/backend /etc/nginx/sites-enabled
 sudo systemctl start gunicorn.socket
 sudo systemctl enable gunicorn.socket
 sudo systemctl daemon-reload
