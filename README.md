@@ -39,4 +39,4 @@ Next, I provide a list of necessary actions for the initial setup of a remote vi
 Thats all.
 
 ### Option 2
-
+  1. I'm assuming you just installed Ubuntu 20.04 so make [initial server setup](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04)
