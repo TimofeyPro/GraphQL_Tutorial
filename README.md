@@ -151,7 +151,7 @@ server {
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        root /home/tim/backend;
+        root /home/your_user_name/backend;
     }
 
     location / {
