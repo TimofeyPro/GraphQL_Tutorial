@@ -42,10 +42,10 @@ Thats all.
   1. I'm assuming you just installed Ubuntu 20.04 so make [initial server setup](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04)
   2. Install Python, PostgreSQL, Nginx, [cURL](https://curl.se/docs/faq.html), tree:
 ```
-   sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl tree
+sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl tree
 ```
-  3. Make setup of Postgres database (you need to define myprojectuser, myproject and 'password' and copy them in settings.py later):
-```postgres
+  3. Make Postgres database setup (you need to define myprojectuser, myproject and 'password' and copy them in settings.py later):
+```
 sudo -u postgres psql
 postgres=# CREATE DATABASE myproject;
 postgres=# CREATE USER myprojectuser WITH PASSWORD 'password';
@@ -55,6 +55,40 @@ postgres=# ALTER ROLE myprojectuser SET timezone TO 'UTC';
 postgres=# GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
 postgres=# \q
 ```
-  4.
-  5.
-  6. ... work in progress...
+  4. Install [Poetry](https://python-poetry.org/docs/master/#installing-with-the-official-installer)
+```
+sudo apt install python3.8-venv
+sudo curl -sSL https://install.python-poetry.org | python3 -
+export PATH="/home/your_user_name/.local/bin:$PATH"
+echo $PATH
+poetry --version
+``` 
+  5. Create project **backend** with virtual environment and install Django in it:
+```
+mkdir backend
+cd backend
+~/backend$ poetry init --no-interaction --dependency Django==4.0.2
+~/backend$ poetry install
+~/backend$ poetry shell
+(backend-...-py3.8) ~/backend$ django-admin startproject backend ~/backend
+(backend-...-py3.8) ~/backend$ tree -L 2
+``` 
+  6. Make changes in settings.py for ALLOWED_HOSTS, DATABASES and STATIC_ROOT
+```
+nano backend/settings.py
+ALLOWED_HOSTS = ['your_server_domain_or_IP', 'localhost']
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'myproject',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'password',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
+}
+STATIC_URL = '/static/'
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+``` 
+  8. .. . . ... work in progress...
