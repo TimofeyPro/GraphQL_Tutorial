@@ -97,10 +97,49 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 (backend-...-py3.8) ~/backend$ python manage.py makemigrations
 (backend-...-py3.8) ~/backend$ python manage.py migrate
 (backend-...-py3.8) ~/backend$ python manage.py createsuperuser
-(backend-...-py3.8) ~/backend$ python 
 (backend-...-py3.8) ~/backend$ python manage.py collectstatic
+sudo ufw allow 8000
 (backend-...-py3.8) ~/backend$ python manage.py runserver 0.0.0.0:8000
 ``` 
-  9. 
+  8. Creating systemd Socket and Service Files for Gunicorn
+```
+sudo nano /etc/systemd/system/gunicorn.socket
+[Unit]
+Description=gunicorn socket
+
+[Socket]
+ListenStream=/run/gunicorn.sock
+
+[Install]
+WantedBy=sockets.target
+``` 
+```
+sudo nano /etc/systemd/system/gunicorn.service
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=your_user_name
+Group=www-data
+WorkingDirectory=/home/your_user_name/backend
+ExecStart=/home/your_user_name/backend/backend-...-py3.8/bin/gunicorn \
+          --access-logfile - \
+          --workers 3 \
+          --bind unix:/run/gunicorn.sock \
+          backend.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+```
+```
+sudo systemctl start gunicorn.socket
+sudo systemctl enable gunicorn.socket
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
+``` 
+  9. Configure Nginx to Proxy Pass to Gunicorn
   
-  10. . . . .. . . ... work in progress...
+  10
+  11. . . . . . .. . . ... work in progress...
