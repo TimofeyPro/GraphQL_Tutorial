@@ -38,5 +38,23 @@ Next, I provide a list of necessary actions for the initial setup of a remote vi
 
 Thats all.
 
-### Option 2
+### Option 2 (Django 4.x, Poetry, Strawberry, Vue.js v3.x and Vue Apollo v4)
   1. I'm assuming you just installed Ubuntu 20.04 so make [initial server setup](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04)
+  2. Install Python, PostgreSQL, Nginx, [cURL](https://curl.se/docs/faq.html), tree:
+```
+   sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl tree
+```
+  3. Make setup of Postgres database (you need to define myprojectuser, myproject and 'password' and copy them in settings.py later):
+```postgres
+sudo -u postgres psql
+postgres=# CREATE DATABASE myproject;
+postgres=# CREATE USER myprojectuser WITH PASSWORD 'password';
+postgres=# ALTER ROLE myprojectuser SET client_encoding TO 'utf8';
+postgres=# ALTER ROLE myprojectuser SET default_transaction_isolation TO 'read committed';
+postgres=# ALTER ROLE myprojectuser SET timezone TO 'UTC';
+postgres=# GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
+postgres=# \q
+```
+  4.
+  5.
+  6. ... work in progress...
