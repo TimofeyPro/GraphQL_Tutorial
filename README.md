@@ -72,6 +72,7 @@ cd backend
 ~/backend$ poetry shell
 (backend-...-py3.8) ~/backend$ django-admin startproject backend ~/backend
 (backend-...-py3.8) ~/backend$ tree -L 2
+(backend-...-py3.8) ~/backend$ poetry add psycopg2-binary
 ``` 
   6. Make changes in settings.py for ALLOWED_HOSTS, DATABASES and STATIC_ROOT
 ```
