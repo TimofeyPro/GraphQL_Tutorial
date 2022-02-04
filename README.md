@@ -19,7 +19,7 @@ Since the backend and frontend in this example work completely independently, we
 Next, I provide a list of necessary actions for the initial setup of a remote virtual server and the creation of a new frontend part:
  
    1. Make [initial server setup](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04)
-   2. Make [set up of Django with Postgres, Nginx, and Gunicorn on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04)
+   2. Make [set up of Django with Postgres, Nginx, and Gunicorn on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04). Your should install Django==3.1.7 for this Option.
    3. Follow steps 1 - 4 from [original tutorial](https://realpython.com/python-django-blog/)
    4. sudo ufw allow 8080 (this opens port 8080 which will be used by frontend)
    5. install latest stable version of [nude.js](https://github.com/nodesource/distributions):
