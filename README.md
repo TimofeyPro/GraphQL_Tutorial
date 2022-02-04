@@ -114,6 +114,7 @@ ListenStream=/run/gunicorn.sock
 WantedBy=sockets.target
 ``` 
 ```
+(backend-...-py3.8) ~/backend$ poetry env info
 sudo nano /etc/systemd/system/gunicorn.service
 [Unit]
 Description=gunicorn daemon
@@ -124,7 +125,7 @@ After=network.target
 User=your_user_name
 Group=www-data
 WorkingDirectory=/home/your_user_name/backend
-ExecStart=/home/your_user_name/backend/backend-...-py3.8/bin/gunicorn \
+ExecStart=/home/your_user_name/.cache/pypoetry/virtualenvs/backend-...-py3.8/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \
@@ -140,6 +141,30 @@ sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
 ``` 
   9. Configure Nginx to Proxy Pass to Gunicorn
-  
-  10
+```
+sudo nano /etc/nginx/sites-available/backend
+server {
+    listen 80;
+    listen [::]:80;
+    server_name your_server_domain_or_IP;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/tim/backend;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+}
+```  
+```
+sudo ln -s /etc/nginx/sites-available/backend /etc/nginx/sites-enabled
+sudo nginx -t
+sudo systemctl restart nginx
+sudo ufw delete allow 8000
+sudo ufw allow 'Nginx Full'
+```
+  10. Create the Django Blog Application
   11. . . . . . .. . . ... work in progress...
