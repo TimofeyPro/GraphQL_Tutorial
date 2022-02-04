@@ -104,6 +104,7 @@ sudo ufw allow 8000
   8. Creating systemd Socket and Service Files for Gunicorn
 ```
 (backend-...-py3.8) ~/backend$ poetry add gunicorn
+(backend-...-py3.8) ~/backend$ poetry show --tree
 sudo nano /etc/systemd/system/gunicorn.socket
 [Unit]
 Description=gunicorn socket
@@ -167,6 +168,7 @@ sudo nginx -t
 sudo systemctl restart nginx
 sudo ufw delete allow 8000
 sudo ufw allow 'Nginx Full'
+sudo ufw status verbose
 ```
   10. Create the Django Blog Application
   11. . . . . . .. . . ... work in progress...
