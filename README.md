@@ -91,4 +91,15 @@ STATIC_URL = '/static/'
 import os
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 ``` 
-  8. .. . . ... work in progress...
+  7. Run Django Migrations, create Superuser and see the default Django index page:
+```
+(backend-...-py3.8) ~/backend$ python manage.py makemigrations
+(backend-...-py3.8) ~/backend$ python manage.py migrate
+(backend-...-py3.8) ~/backend$ python manage.py createsuperuser
+(backend-...-py3.8) ~/backend$ python 
+(backend-...-py3.8) ~/backend$ python manage.py collectstatic
+(backend-...-py3.8) ~/backend$ python manage.py runserver 0.0.0.0:8000
+``` 
+  9. 
+  
+  10. . . . .. . . ... work in progress...
