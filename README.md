@@ -170,5 +170,93 @@ sudo ufw delete allow 8000
 sudo ufw allow 'Nginx Full'
 sudo ufw status verbose
 ```
-  10. Create the Django Blog Application
-  11. . . . . . .. . . ... work in progress...
+At this stage you should be able to access your site and see Django welcome page.
+
+  10. Create the Django Blog Application (use <poetry shell> command to access virtual environment) 
+```
+(backend-...-py3.8) ~/backend$ python manage.py startapp blog
+(backend-...-py3.8) ~/backend$ nano backend/settings.py
+ INSTALLED_APPS = [
+  ...
+  'blog',
+]
+``` 
+  11. Study and copy blog/models.py and blog/admin.py from [here](https://github.com/TimofeyPro/GraphQL_Tutorial/tree/main/backend/blog).
+  12. Study and copy blog/schema.py from [here](https://github.com/TimofeyPro/GraphQL_Tutorial/blob/main/backend/blog/schema.py). Then install Strawberry and django-cors-headers:
+```
+(backend-...-py3.8) ~/backend$ poetry add strawberry-graphql-django
+(backend-...-py3.8) ~/backend$ poetry add django-cors-headers
+nano backend/settings.py
+INSTALLED_APPS = [
+  ...
+  'strawberry.django',
+  'corsheaders',
+]
+MIDDLEWARE = [
+  'corsheaders.middleware.CorsMiddleware',
+  ...
+]
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:8080',
+    'http://your_server_domain_or_IP:8080',
+]
+```
+```
+nano backend/urls.py
+ 
+from django.contrib import admin
+from django.urls import include, path
+from strawberry.django.views import AsyncGraphQLView
+from django.views.decorators.csrf import csrf_exempt
+from blog.schema import schema
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('graphql', csrf_exempt(AsyncGraphQLView.as_view(schema=schema))),
+]
+``` 
+  
+  13. Refresh Django and Gunicorn: 
+``` 
+(backend-...-py3.8) ~/backend$ python manage.py makemigrations
+(backend-...-py3.8) ~/backend$ python manage.py migrate
+(backend-...-py3.8) ~/backend$ python manage.py collectstatic
+sudo systemctl daemon-reload
+sudo systemctl restart gunicorn
+``` 
+  14. Visit to http://your_server_domain_or_IP/admin and add (input) at least three posts
+ 
+  15. Visit to http://your_server_domain_or_IP/graphql and review your Query. This is your GraphQL API endpoint.
+ 
+  16. Thats all for backend. Then do actions 4-15 from Option 1 and you should see your blog up and running
+ 
+  17. Your backend folder structure should be as follows:
+ ```
+~/backend$ tree -L 2
+├── backend
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── blog
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── admin.py
+│   ├── apps.py
+│   ├── migrations
+│   ├── models.py
+│   ├── schema.py
+│   ├── tests.py
+│   └── views.py
+├── manage.py
+├── poetry.lock
+├── pyproject.toml
+└── static
+    ├── admin
+    └── graphiql.html
+
+``` 
+
