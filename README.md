@@ -13,7 +13,7 @@ I tested [Build a Blog Using Django, Vue, and GraphQL tutorial](https://realpyth
 
 Since the backend and frontend in this example work completely independently, we can test their operations separately. This will also allow you to better understand how each component works. You have two options:
 <br> Option 1 - leave backend with Graphene-Django unchanged, as in [the original exercise](https://realpython.com/python-django-blog/), and change only frontend
-<br> Option 2 - completely change both backend and frontend, i.e. we will use Django 4.x, Strawberry, Vue v3 and Vue Apollo v4.
+<br> Option 2 - completely change both backend and frontend, i.e. we will use Django 4.x, Poetry, Strawberry, Vue v3 and Vue Apollo v4.
 
 ### Option 1
 Next, I provide a list of necessary actions for the initial setup of a remote virtual server and the creation of a new frontend part:
