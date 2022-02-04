@@ -2,7 +2,7 @@ import strawberry
 import strawberry_django
 from strawberry_django import auto, auth
 from . import models
-from typing import List
+from typing import List, Optional
 from datetime import date
 from django.contrib.auth import get_user_model
 
@@ -12,13 +12,19 @@ class UserType:
     username: auto
     first_name: auto
     last_name: auto
-
+    is_superuser: auto
+    is_staff: auto
+    email: auto
+    is_active: auto
+    profile: auto
+    
 @strawberry.django.type(models.Profile)
 class AuthorType:
     id: auto
     user: 'UserType'
     website: auto
     bio: auto
+    post_set: List['PostType']
 
 @strawberry.django.type(models.Tag)
 class TagType:
@@ -73,14 +79,14 @@ def posts_by_tag(root, info, tag: str):
         .filter(tags__name__iexact=tag)
     )
 
-
 @strawberry.type
 class Query:
     all_posts: List[PostType] = strawberry.django.field(resolver=get_all_posts)
-    author_by_username: List[AuthorType] = strawberry.django.field(resolver=author_by_username)
-    post_by_slug: List[PostType] = strawberry.django.field(resolver=post_by_slug)
+    author_by_username: Optional[AuthorType] = strawberry.django.field(resolver=author_by_username)
+    post_by_slug: 'PostType' = strawberry.django.field(resolver=post_by_slug)
     posts_by_author: List[PostType] = strawberry.django.field(resolver=posts_by_author)
     posts_by_tag: List[PostType] = strawberry.django.field(resolver=posts_by_tag)
  
 schema = strawberry.Schema(query=Query)
+
 
