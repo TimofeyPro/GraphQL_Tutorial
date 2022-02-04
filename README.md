@@ -103,6 +103,7 @@ sudo ufw allow 8000
 ``` 
   8. Creating systemd Socket and Service Files for Gunicorn
 ```
+(backend-...-py3.8) ~/backend$ poetry add gunicorn
 sudo nano /etc/systemd/system/gunicorn.socket
 [Unit]
 Description=gunicorn socket
