@@ -183,7 +183,7 @@ At this stage you should be able to access your site and see Django welcome page
 ``` 
   11. Study and copy blog/models.py and blog/admin.py from [here](https://github.com/TimofeyPro/GraphQL_Tutorial/tree/main/backend/blog).
   12. Study and copy blog/schema.py from [here](https://github.com/TimofeyPro/GraphQL_Tutorial/blob/main/backend/blog/schema.py). Then install Strawberry and django-cors-headers:
-```
+```python
 (backend-...-py3.8) ~/backend$ poetry add strawberry-graphql-django
 (backend-...-py3.8) ~/backend$ poetry add django-cors-headers
 nano backend/settings.py
@@ -202,7 +202,7 @@ CORS_ORIGIN_WHITELIST = [
     'http://your_server_domain_or_IP:8080',
 ]
 ```
-```
+```python
 nano backend/urls.py
  
 from django.contrib import admin
