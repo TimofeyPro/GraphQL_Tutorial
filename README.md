@@ -75,7 +75,7 @@ cd backend
 (backend-...-py3.8) ~/backend$ poetry add psycopg2-binary
 ``` 
   6. Make changes in settings.py for ALLOWED_HOSTS, DATABASES and STATIC_ROOT
-```
+```python
 nano backend/settings.py
 ALLOWED_HOSTS = ['your_server_domain_or_IP', 'localhost']
 DATABASES = {
@@ -173,7 +173,7 @@ sudo ufw status verbose
 At this stage you should be able to access your site and see Django welcome page.
 
   10. Create the Django Blog Application (use <poetry shell> command to access virtual environment) 
-```
+```python
 (backend-...-py3.8) ~/backend$ python manage.py startapp blog
 (backend-...-py3.8) ~/backend$ nano backend/settings.py
  INSTALLED_APPS = [
