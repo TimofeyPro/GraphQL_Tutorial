@@ -48,15 +48,15 @@ Thats all.
 sudo apt install python3-pip python3-dev libpq-dev postgresql postgresql-contrib nginx curl tree
 ```
   3. Make Postgres database setup (you need to define myprojectuser, myproject and 'password' and copy them in settings.py later):
-```
+```sql
 sudo -u postgres psql
-postgres=# CREATE DATABASE myproject;
-postgres=# CREATE USER myprojectuser WITH PASSWORD 'password';
-postgres=# ALTER ROLE myprojectuser SET client_encoding TO 'utf8';
-postgres=# ALTER ROLE myprojectuser SET default_transaction_isolation TO 'read committed';
-postgres=# ALTER ROLE myprojectuser SET timezone TO 'UTC';
-postgres=# GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
-postgres=# \q
+CREATE DATABASE myproject;
+CREATE USER myprojectuser WITH PASSWORD 'password';
+ALTER ROLE myprojectuser SET client_encoding TO 'utf8';
+ALTER ROLE myprojectuser SET default_transaction_isolation TO 'read committed';
+ALTER ROLE myprojectuser SET timezone TO 'UTC';
+GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;
+\q
 ```
   4. Install [Poetry](https://python-poetry.org/docs/master/#installing-with-the-official-installer)
 ```
@@ -96,7 +96,7 @@ import os
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 ``` 
   7. Run Django Migrations, create Superuser and see the default Django index page:
-```
+```PowerShell
 (backend-...-py3.8) ~/backend$ python manage.py makemigrations
 (backend-...-py3.8) ~/backend$ python manage.py migrate
 (backend-...-py3.8) ~/backend$ python manage.py createsuperuser
