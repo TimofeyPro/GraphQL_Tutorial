@@ -102,7 +102,7 @@ sudo ufw allow 8000
 (backend-...-py3.8) ~/backend$ python manage.py runserver 0.0.0.0:8000
 ``` 
   8. Creating systemd Socket and Service Files for Gunicorn
-```
+```PowerShell
 (backend-...-py3.8) ~/backend$ poetry add gunicorn
 (backend-...-py3.8) ~/backend$ poetry show --tree
 sudo nano /etc/systemd/system/gunicorn.socket
@@ -115,7 +115,7 @@ ListenStream=/run/gunicorn.sock
 [Install]
 WantedBy=sockets.target
 ``` 
-```
+```PowerShell
 (backend-...-py3.8) ~/backend$ poetry env info
 sudo nano /etc/systemd/system/gunicorn.service
 [Unit]
@@ -136,7 +136,7 @@ ExecStart=/home/your_user_name/.cache/pypoetry/virtualenvs/backend-...-py3.8/bin
 [Install]
 WantedBy=multi-user.target
 ```
-```
+```PowerShell
 sudo ln -s /etc/nginx/sites-available/backend /etc/nginx/sites-enabled
 sudo systemctl start gunicorn.socket
 sudo systemctl enable gunicorn.socket
@@ -144,7 +144,7 @@ sudo systemctl daemon-reload
 sudo systemctl restart gunicorn
 ``` 
   9. Configure Nginx to Proxy Pass to Gunicorn
-```
+```PowerShell
 sudo nano /etc/nginx/sites-available/backend
 server {
     listen 80;
@@ -162,7 +162,7 @@ server {
     }
 }
 ```  
-```
+```PowerShell
 sudo ln -s /etc/nginx/sites-available/backend /etc/nginx/sites-enabled
 sudo nginx -t
 sudo systemctl restart nginx
