@@ -28,13 +28,16 @@ Next, I provide a list of necessary actions for the initial setup of a remote vi
    6. sudo npm install -g @vue/cli  
    7. vue create frontend (choose - Default (<b>Vue 3</b>) ([Vue 3] babel, eslint)
    8. cd frontend
-   9. vue add router
-   10. npm install --save graphql graphql-tag @apollo/client
-   11. npm install --save @vue/apollo-composable
-   12. npm install --save @vue/apollo-option
-   13. npm run serve (check that frontend works well at http://<i>IP address of your server</i>:8080/
-   14. copy and study App.vue, main.js and router.js from this repository at [GraphQL_Tutorial/frontend/src/](https://github.com/TimofeyPro/GraphQL_Tutorial/tree/main/frontend/src)
-   15. vue files in components folder (Vue Components as per Steps 7 & 8) were not changed but also saved [here](https://github.com/TimofeyPro/GraphQL_Tutorial/tree/main/frontend/src/components)
+   9. Install Vue Router and Apollo:
+``` 
+ ~/backend$ vue add router
+ ~/backend$ npm install --save graphql graphql-tag @apollo/client
+ ~/backend$ npm install --save @vue/apollo-composable
+ ~/backend$ npm install --save @vue/apollo-option
+```
+   10. **npm run serve** (check that frontend works well at http://<i> IP_address_of_your_server</i>:8080/
+   11. copy and study App.vue, main.js and router.js from this repository at [GraphQL_Tutorial/frontend/src/](https://github.com/TimofeyPro/GraphQL_Tutorial/tree/main/frontend/src)
+   12. vue files in components folder (Vue Components as per Steps 7 & 8) were not changed but also saved [here](https://github.com/TimofeyPro/GraphQL_Tutorial/tree/main/frontend/src/components)
 
 Thats all.
 
@@ -229,7 +232,7 @@ sudo systemctl restart gunicorn
  
   15. Visit to http://your_server_domain_or_IP/graphql and review your Query. This is your GraphQL API endpoint.
  
-  16. Thats all for backend. Then do actions 4-15 from Option 1 and you should see your blog up and running
+  16. Thats all for backend. Then do actions 4-12 from Option 1 and you should see your blog up and running
  
   17. Your backend folder structure should be as follows:
  ```
