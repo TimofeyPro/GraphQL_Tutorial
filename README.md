@@ -263,3 +263,6 @@ sudo systemctl restart gunicorn
 
 ``` 
 
+ ### Usefull notes to understand above better:
+* Graphene-Django has [DjangoObjectType](https://github.com/TimofeyPro/GraphQL_Tutorial/blob/main/backend/blog/schema_graphene.py) which includes all the fields in the model by default. In [this Strawberry schema.py]( https://github.com/TimofeyPro/GraphQL_Tutorial/blob/main/backend/blog/schema.py) we have defined each field separately.
+* To restrict users from accessing the GraphQL API page the standard Django [LoginRequiredMixin](https://docs.graphene-python.org/projects/django/en/latest/authorization/) can be used
