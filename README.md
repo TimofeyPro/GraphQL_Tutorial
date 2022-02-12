@@ -266,5 +266,21 @@ sudo systemctl restart gunicorn
  #### Usefull notes to understand above better:
 * Graphene-Django has [DjangoObjectType](https://github.com/TimofeyPro/GraphQL_Tutorial/blob/main/backend/blog/schema_graphene.py) which includes all the fields in the model by default. In [this Strawberry schema.py]( https://github.com/TimofeyPro/GraphQL_Tutorial/blob/main/backend/blog/schema.py) we have defined each field separately
 * To restrict users from accessing the GraphQL API page the standard Django [LoginRequiredMixin](https://docs.djangoproject.com/en/4.0/topics/auth/default/#the-loginrequired-mixin) can be used. Unfortunately [LoginRequiredMixin doesn't support async yet](https://stackoverflow.com/questions/66512353/using-loginrequiredmixin-with-async-views). 
+```python
+# views.py
+from django.contrib.auth.mixins import LoginRequiredMixin
+from strawberry.django.views import GraphQLView
+
+class PrivateGraphQLView(LoginRequiredMixin, GraphQLView):
+    login_url = '/login/' 
+```
+```python
+# urls.py
+from your_app.views import PrivateGraphQLView
+ 
+urlpatterns = [
+    # other paths,
+    path('graphql', csrf_exempt(PrivateGraphQLView.as_view(graphiql=True, schema=schema))), 
+```
 * Deployment to productiond: [disable GraphiQL and Introspection](https://strawberry.rocks/docs/operations/deployment)
 * [When is it safe to use the csrf_exempt decorator?](https://stackoverflow.com/questions/51764452/403-by-graphene-django-dont-use-csrf-exempt)
