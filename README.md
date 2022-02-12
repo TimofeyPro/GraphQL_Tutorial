@@ -77,9 +77,13 @@ cd backend
 (backend-...-py3.8) ~/backend$ tree -L 2
 (backend-...-py3.8) ~/backend$ poetry add psycopg2-binary
 ``` 
-  6. Make changes in settings.py for ALLOWED_HOSTS, DATABASES and STATIC_ROOT
+  6. Make changes in settings.py for ALLOWED_HOSTS, DATABASES and STATIC_ROOT. [Use Pathlib in Your Django Settings File](https://adamj.eu/tech/2020/03/16/use-pathlib-in-your-django-project/):
 ```python
-nano backend/settings.py
+# nano backend/settings.py
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
+TEMPLATES_DIR = BASE_DIR.joinpath('templates')
+
 ALLOWED_HOSTS = ['your_server_domain_or_IP', 'localhost']
 DATABASES = {
     'default': {
@@ -91,10 +95,9 @@ DATABASES = {
         'PORT': '',
     }
 }
-STATIC_URL = '/static/'
-import os
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
-``` 
+STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'static'
+```
   7. Run Django Migrations, create Superuser and see the default Django index page:
 ```PowerShell
 (backend-...-py3.8) ~/backend$ python manage.py makemigrations
